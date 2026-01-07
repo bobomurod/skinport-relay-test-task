@@ -3,7 +3,7 @@ import assert from "node:assert";
 import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
-import { getMergedItems } from "../../src/services/items.service.js";
+import { getMergedItems } from "../../dist/src/services/items.service.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const testDir = join(__dirname, "../");

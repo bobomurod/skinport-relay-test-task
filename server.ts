@@ -14,10 +14,10 @@ const cache = simpleTTLCache(60 * 1000 * 15); //15 minut kesh
 
 // поехали рауты
 server.get("/items", async (req, res) => {
-  const result = cache.get(req.pathname);
+  const result = cache.get(req.url);
   if (!result) {
     const items = await itemsService();
-    cache.set(req.pathname, items);
+    cache.set(req.url, items);
     res.send(items);
   } else {
     res.send(result);
@@ -35,7 +35,7 @@ server.get("/transactions", async (req, res) => {
 });
 
 server.post("/purchase", async (req, res) => {
-  const { userId, itemId, quantity, idempotencyKey } = req.body;
+  const { userId, itemId, quantity, idempotencyKey } = req.body as any;
   const result = await purchaseService(
     userId,
     itemId,
@@ -49,7 +49,7 @@ server.post("/purchase", async (req, res) => {
 if (import.meta.url === `file://${process.argv[1]}`) {
   server.listen({ port: 3003, host: "0.0.0.0" }, (err, address) => {
     if (err) {
-      Fastify.log.error(err);
+      console.error(err);
       process.exit(1);
     }
     console.log(`Server serving services on ${address}`);

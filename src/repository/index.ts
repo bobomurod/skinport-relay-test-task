@@ -5,12 +5,12 @@ const pool = new pg.Pool({
   host: process.env.DB_HOST,
   database: process.env.DB_NAME,
   password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT,
+  port: Number(process.env.DB_PORT),
 });
 
 await pool.connect();
 
-export async function getUserById(id) {
+export async function getUserById(id: number) {
   try {
     const result = await pool.query(
       "SELECT id, username FROM users WHERE id = $1",
@@ -23,7 +23,7 @@ export async function getUserById(id) {
   }
 }
 
-export async function getItemById(itemId) {
+export async function getItemById(itemId: number) {
   try {
     const result = await pool.query(
       "SELECT id, name, price_cents FROM items WHERE id = $1",
@@ -59,11 +59,11 @@ export async function getTransactions() {
 }
 
 export async function performPurchaseTransaction(
-  userId,
-  item,
-  quantity,
-  amountCents,
-  idempotencyKey,
+  userId: number,
+  item: any,
+  quantity: number,
+  amountCents: number,
+  idempotencyKey: string,
 ) {
   const client = await pool.connect();
 
@@ -116,7 +116,7 @@ export async function performPurchaseTransaction(
 
     await client.query("COMMIT");
     return { success: true };
-  } catch (error) {
+  } catch (error: any) {
     await client.query("ROLLBACK");
 
     // Помечаем как failed - так надо чтоб видеть зафейленные транзакции

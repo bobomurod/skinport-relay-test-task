@@ -2,14 +2,15 @@ FROM node:24.12.0-alpine3.23
 
 WORKDIR /app
 
-ENV NODE_ENV=production
-
 COPY package*.json ./
-RUN npm ci --omit=dev
+COPY tsconfig.json ./
+RUN npm ci
 
-COPY server.js ./
+COPY server.ts ./
 COPY src/ ./src/
 COPY tests/ ./tests/
+
+RUN npm run build
 
 RUN addgroup -g 1001 -S nodejs && \
     adduser -S appuser -u 1001 -G nodejs && \
@@ -19,4 +20,4 @@ USER appuser
 
 EXPOSE 3003
 
-CMD ["node", "server.js"]
+CMD ["node", "dist/server.js"]

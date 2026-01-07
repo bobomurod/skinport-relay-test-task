@@ -1,7 +1,7 @@
 import "dotenv/config";
 import { describe, it, before, after } from "node:test";
 import assert from "node:assert";
-import { server } from "../../server.js";
+import { server } from "../../dist/server.js";
 import { uuidv7 } from "uuidv7";
 
 describe("API Endpoints", () => {

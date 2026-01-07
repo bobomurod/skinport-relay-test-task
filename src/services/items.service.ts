@@ -16,11 +16,11 @@ const authorizationHeaderString = `Basic ${encodedData}`;
 //
 
 const params = new URLSearchParams({
-  app_id: 730,
+  app_id: "730",
   currency: "EUR",
-  tradable: true,
+  tradable: "true",
 });
-async function fetchItems(tradable) {
+async function fetchItems(tradable: boolean) {
   let res;
   try {
     res = await fetch(`${SKINPORT_BASE_API}/items?tradable=${tradable}`, {
@@ -32,7 +32,7 @@ async function fetchItems(tradable) {
   } catch (error) {
     console.error(error);
   }
-  return await res.json();
+  return await res!.json();
 }
 
 export async function itemsService() {
@@ -44,7 +44,7 @@ export async function itemsService() {
   return mergedItems;
 }
 
-export async function getMergedItems(tradableItems, nonTradableItems) {
+export async function getMergedItems(tradableItems: any[], nonTradableItems: any[]) {
   const byName = new Map();
 
   for (const item of tradableItems) {

@@ -1,7 +1,7 @@
 import "dotenv/config";
 import { describe, it } from "node:test";
 import assert from "node:assert";
-import { purchaseService } from "../../src/services/purchase.service.js";
+import { purchaseService } from "../../dist/src/services/purchase.service.js";
 import { uuidv7 } from "uuidv7";
 
 describe("purchaseService", () => {

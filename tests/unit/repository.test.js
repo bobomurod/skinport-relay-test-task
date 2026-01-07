@@ -5,7 +5,7 @@ import {
   getUserById,
   getItemById,
   getUsersAndBalances,
-} from "../../src/repository/index.js";
+} from "../../dist/src/repository/index.js";
 
 describe("Repository", () => {
   describe("getUserById", () => {
