@@ -2,7 +2,7 @@
   <a href="https://lipsum.com" target="blank"><img src="https://habrastorage.org/r/w1560/getpro/habr/upload_files/ae6/c62/b55/ae6c62b55a83ba5f2f014751ee973d6e.jpg" width="420" alt="Yes yes yes" /></a>
 </p>
 
- «Всё занимает больше времени, чем вы планировали.» - Дуглас Хофштадтер, американский учёный
+ «Всё занимает больше времени, чем вы планировали.» - <a href="https://en.wikipedia.org/wiki/Douglas_Hofstadter">Дуглас Хофштадтер</a>, американский учёный
 
 <br>
 
