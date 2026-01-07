@@ -72,11 +72,14 @@ export async function performPurchaseTransaction(
 
     // Проверка идемпотентности
     const existing = await client.query(
-      "SELECT status FROM transactions WHERE idempotency_key = $1",
+      "SELECT status, id FROM transactions WHERE idempotency_key = $1",
       [idempotencyKey],
     );
     if (existing.rows.length) {
-      return { success: existing.rows[0].status === "completed" };
+      return {
+        success: existing.rows[0].status === "completed",
+        transactionId: existing.rows[0].id,
+      };
     }
 
     // Получаем deposit_id юзера
