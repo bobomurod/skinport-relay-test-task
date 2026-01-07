@@ -1,0 +1,29 @@
+{
+  "name": "skinport-relay",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/bobomurod/skinport-relay-test-task#readme",
+  "bugs": {
+    "url": "https://github.com/bobomurod/skinport-relay-test-task/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/bobomurod/skinport-relay-test-task.git"
+  },
+  "license": "MIT",
+  "author": "@bobomurod on github or @b0b0mur0d can be found on telegram",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --test --test-force-exit 'tests/**/*.test.js'",
+    "test:unit": "node --test --test-force-exit 'tests/unit/**/*.test.js'",
+    "test:integration": "node --test --test-force-exit 'tests/integration/**/*.test.js'",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "fastify": "^5.6.2",
+    "pg": "^8.16.3",
+    "uuidv7": "^1.1.0"
+  }
+}
